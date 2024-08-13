@@ -7,38 +7,45 @@ const textoResultado = document.querySelector(".texto-resultado");
 const perguntas = [
     {
    enunciado: "Onde se passa o jogo "Uncharted: The Lost Legacy"?",
-    alternativas: (
-        "Itália",
-        "India"
-    )
+    alternativas: [
+        {
+            texto: "Italia",
+            afirmacao: "afirmacao"
+        },
+        {
+            texto:"India",
+            afirmacao:"afirmacao"
+        }
+    
+    ]
 },
 {
     enunciado: "Quem fez o chefe de cozinha Gordon Ramsey chorar?",
-     alternativas: (
+     alternativas: [
          "Marco Pierre White",
          "Jamie Oliver"
-     )
+        ]
  },
  {
     enunciado: "Onde ocorreu a Guerra do Ópio?",
-     alternativas: (
+     alternativas: [
          "Espanha",
          "China"
-     )
+        ]
  },
  {
     enunciado: "Quantos vértices tem um cubo?",
-     alternativas: (
+     alternativas: [
          "6",
          "8"
-     )
+        ]
  },
  {
     enunciado: "Quantas temporadas tem a série The Office?",
-     alternativas: (
+     alternativas: [
          "7",
          "9"
-     )
+        ]
  },
 ];
 
@@ -48,4 +55,15 @@ let perguntaAtual;
 function mostraPergunta() {
       perguntaAtual = perguntas[atual];
       caixaPerguntas.textContent = perguntaAtual.enunciado;
+      mostraAlternativas();
 }
+
+function mostraAlternativas(){
+    for(const alternativa of perguntaAtual.alternativas){
+        const botaoAlternativas = document.createElement("button");
+        botaoAlternativas.textContent = alternativa;
+        caixaAlternativas.appendChild(botaoAlternativas);
+    }
+}
+
+mostraPergunta();
